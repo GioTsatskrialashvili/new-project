@@ -1,13 +1,23 @@
 <?php
-namespace Pages;
+namespace Pages\Admin;
+use Helpers\Session;
 class Page{
 
     public $pageName;
     public $hasHeader=true;
-    public $hasFooter=false;
+    public $hasFooter=true;
     public $model;
     public $data = null;
+
+    function __construct(){
+        Session::start();
+        if(!Session::isAdmin()){
+            
+            header('location:?type=admin&page=login');
+        }
+    }
     public function load($path){
+    
         $this->getHead();
         if($this->hasHeader){
             $this->getHeader(); 
@@ -22,17 +32,17 @@ class Page{
         $this->getFoot();
     }
     public function getHead(){
-        include('views/components/head.php');
+        include('views/admin/components/head.php');
     }
     public function getFoot()
     {
-        include('views/components/foot.php');
+        include('views/admin/components/foot.php');
     }
     public function getHeader(){
-        include('views/components/header.php');
+        include('views/admin/components/header.php');
     }
     public function getFooter()
     {
-        include('views/components/footer.php');
+        include('views/admin/components/footer.php');
     }
 }

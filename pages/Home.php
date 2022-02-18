@@ -1,4 +1,7 @@
 <?php
+namespace Pages;
+use Pages\Page;
+use Models\HomeModel;
 class Home extends Page{
     function __construct() {
         $this->model = new HomeModel();
