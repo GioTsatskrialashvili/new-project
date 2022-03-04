@@ -1,9 +1,35 @@
+<section id="intro">
+        <div class="container">
+            <div class="row">
+
+                
+
+                <div class="intro-content">
+                    <div class="content">
+                        <span>Trending Episode</span>
+                        <h1>Dreams of an unique ideas scattered through a</h1>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                    </div>
+
+                    <div class="img">
+                        <img src="assets/img/main-img.png" alt="">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+
 <main id="main">
     <section class="about">
         <div class="container">
             <div class="row">
-                <h1>Welcome</h1>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi debitis corporis ipsa distinctio quis ipsam iure perferendis error, ducimus, natus illo. Aliquam ab quae laboriosam nihil eum in accusantium! Sapiente.</p>  
+                <h1><?= $data['about']['home_title'] ?></h1>
+                <p> <?= $data['about']['short_text'] ?>
+                <a href="?page=about">more</a>
+            </p>  
+                
             </div>
         </div>
     </section>

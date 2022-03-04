@@ -1,38 +1,56 @@
 <?php
-namespace Pages;
-class Page{
 
+namespace Pages;
+use Pages\PageInterface;
+
+class Page implements PageInterface{
     public $pageName;
-    public $hasHeader=true;
-    public $hasFooter=false;
+    public $hasHeader = true;
+    public $hasFooter = true;
     public $model;
     public $data = null;
-    public function load($path){
+    
+    function __construct() {
+        $this->pageName = isset($_GET['page']) && $_GET['page'] ? $_GET['page'] : 'home' ;
+    }
+
+    public function load($path) {
         $this->getHead();
-        if($this->hasHeader){
-            $this->getHeader(); 
+
+        if($this->hasHeader) {
+            $this->getHeader();
         }
+
+
         $data = $this->data;
 
         include($path);
-        
-        if($this->hasFooter){
-            $this->getFooter(); 
+
+        if($this->hasFooter) {
+            $this->getFooter();
         }
+
         $this->getFoot();
     }
-    public function getHead(){
-        include('views/components/head.php');
+
+    public function getHead()
+    {
+        include('views/frontend/components/head.php');
     }
+
     public function getFoot()
     {
-        include('views/components/foot.php');
+        include('views/frontend/components/foot.php');
     }
-    public function getHeader(){
-        include('views/components/header.php');
+
+    public function getHeader()
+    {
+        $pageName = $this->pageName;   
+        include('views/frontend/components/header.php');
     }
+
     public function getFooter()
     {
-        include('views/components/footer.php');
+        include('views/frontend/components/footer.php');
     }
 }
